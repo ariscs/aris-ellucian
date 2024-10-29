@@ -23,5 +23,5 @@ script:pre-request {
 }
 
 script:post-response {
-  bru.setVar('jwtToken', res.body);
+  bru.setVar('jwtToken', `Bearer ${res.body}`);
 }
