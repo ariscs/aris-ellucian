@@ -1,0 +1,27 @@
+meta {
+  name: Gen JWT
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{urlToken}}?expirationMinutes=120
+  body: none
+  auth: none
+}
+
+params:query {
+  expirationMinutes: 120
+}
+
+headers {
+  Authorization: Bearer {{apiKey}}
+}
+
+script:pre-request {
+  bru.deleteVar("jwtToken");
+}
+
+script:post-response {
+  bru.setVar('jwtToken', res.body);
+}

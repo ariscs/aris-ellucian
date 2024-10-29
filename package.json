@@ -1,0 +1,7 @@
+{
+  "name": "aris-ellucian",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}

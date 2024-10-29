@@ -1,0 +1,15 @@
+meta {
+  name: Custom-Tables
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{apiUrl}}/custom-table-configurations/
+  body: none
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{jwtToken}}
+}

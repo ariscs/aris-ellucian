@@ -1,0 +1,26 @@
+meta {
+  name: Sections-Registrations-By-Criteria
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{apiUrl}}/instructional-events?criteria={"section":{"id":"27737a55-db2a-4094-8bb6-d8af6b43d054"}}
+  body: none
+  auth: none
+}
+
+params:query {
+  criteria: {"section":{"id":"27737a55-db2a-4094-8bb6-d8af6b43d054"}}
+}
+
+headers {
+  ~Accept: application/vnd.hedtech.integration.sections-maximum.v16+json
+}
+
+script:pre-request {
+  const urlSplit = req.getUrl().split('=');
+  const newCriteria = encodeURIComponent(urlSplit[1]);
+  const newUrl = urlSplit[0]+'='+newCriteria;
+  req.setUrl(newUrl);
+}

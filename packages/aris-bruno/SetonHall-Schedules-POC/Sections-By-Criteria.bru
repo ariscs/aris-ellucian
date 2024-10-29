@@ -1,0 +1,22 @@
+meta {
+  name: Sections-By-Criteria
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{apiUrl}}/academic-periods?criteria={"category":{"type":"term"},"startOn":{"$gte":"2023-03-07T00:00:00Z"}}
+  body: none
+  auth: none
+}
+
+params:query {
+  criteria: {"category":{"type":"term"},"startOn":{"$gte":"2023-03-07T00:00:00Z"}}
+}
+
+script:pre-request {
+  const urlSplit = req.getUrl().split('=');
+  const newCriteria = encodeURIComponent(urlSplit[1]);
+  const newUrl = urlSplit[0]+'='+newCriteria;
+  req.setUrl(newUrl);
+}

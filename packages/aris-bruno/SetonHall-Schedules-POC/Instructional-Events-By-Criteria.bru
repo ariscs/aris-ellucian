@@ -1,0 +1,26 @@
+meta {
+  name: Instructional-Events-By-Criteria
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{apiUrl}}/sections?criteria={"endOn":"2023-01-01"}
+  body: none
+  auth: none
+}
+
+params:query {
+  criteria: {"endOn":"2023-01-01"}
+}
+
+headers {
+  Accept: application/vnd.hedtech.integration.sections-maximum.v16+json
+}
+
+script:pre-request {
+  const urlSplit = req.getUrl().split('=');
+  const newCriteria = encodeURIComponent(urlSplit[1]);
+  const newUrl = urlSplit[0]+'='+newCriteria;
+  req.setUrl(newUrl);
+}

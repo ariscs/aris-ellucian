@@ -1,0 +1,3 @@
+{
+  "*.{js,jsx,ts,tsx,scss,css,md,json}": ["biome format --write"]
+}

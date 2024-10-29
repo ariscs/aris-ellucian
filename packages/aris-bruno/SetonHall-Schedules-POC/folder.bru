@@ -1,0 +1,11 @@
+meta {
+  name: SetonHall-Schedules-POC
+}
+
+headers {
+  Authorization: Bearer {{jwtToken}}
+}
+
+vars:pre-request {
+  apiUrl: {{process.env.API_URL}}
+}

@@ -1,0 +1,36 @@
+meta {
+  name: Create-Custom-Tables
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{apiUrl}}/custom-table-configurations
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{jwtToken}}
+}
+
+body:json {
+  [
+    {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "customTableDescription": "Header Payment",
+      "customTableName": "xhpay" ,
+      "customTableAPIName": "x-xhpay",
+      "customTableColumns": [
+        {
+          "attributeDataLength": "20",
+          "attributeDataType": "numeric",
+          "attributePrompt": "File ID",
+          "attributeRequired": "true",
+          "columnName": "XHPAY_FILE_ID" ,
+          "attributeKeyColumn": "true"
+        }
+      ]
+    }
+  ]
+}

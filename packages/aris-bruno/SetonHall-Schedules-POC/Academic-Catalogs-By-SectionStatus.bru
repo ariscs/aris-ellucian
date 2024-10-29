@@ -1,0 +1,15 @@
+meta {
+  name: Academic-Catalogs-By-SectionStatus
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{apiUrl}}/section-registrations?sectionStatus="Closed"
+  body: none
+  auth: none
+}
+
+params:query {
+  sectionStatus: "Closed"
+}
