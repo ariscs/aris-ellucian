@@ -2,8 +2,13 @@ meta {
   name: Sandbox
 }
 
+headers {
+  Authorization: Bearer {{jwtToken}}
+}
+
 vars:pre-request {
   urlToken: {{process.env.AUTH_URL}}
   apiKey: {{process.env.API_KEY}}
   apiUrl: {{process.env.API_URL}}
+  graphqlUrl: {{process.env.GRAPHQL_URL}}
 }

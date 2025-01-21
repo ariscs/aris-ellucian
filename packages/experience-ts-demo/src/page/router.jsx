@@ -18,7 +18,7 @@ const RouterPage = (props) => {
 };
 
 RouterPage.propTypes = {
-	pageInfo: PropTypes.object,
+	pageInfo: PropTypes.object
 };
 
 export default RouterPage;

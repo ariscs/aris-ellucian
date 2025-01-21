@@ -1,0 +1,19 @@
+meta {
+  name: Person-Filters-By-Id
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{apiUrl}}/person-filters/:id
+  body: none
+  auth: none
+}
+
+params:path {
+  id: 10c277a5-8727-4ac9-8f38-14e1c0de0bee
+}
+
+headers {
+  Accept: application/vnd.hedtech.integration.v6+json
+}

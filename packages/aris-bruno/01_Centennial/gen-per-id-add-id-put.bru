@@ -1,0 +1,19 @@
+meta {
+  name: gen-per-id-add-id-put
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{apiUrl}}/general-person-identification-additional-identification
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "additionalId": "123",
+    "adidCode": "VAS",
+    "id": "999888777"
+  }
+}

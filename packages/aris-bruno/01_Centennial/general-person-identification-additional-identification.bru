@@ -1,0 +1,19 @@
+meta {
+  name: general-person-identification-additional-identification
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{apiUrl}}/general-person-identification-additional-identification
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/vnd.hedtech.integration.v1.0.0+json
+}
+
+auth:bearer {
+  token: {{jwtToken}}
+}

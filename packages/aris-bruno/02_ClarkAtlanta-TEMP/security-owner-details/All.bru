@@ -1,0 +1,23 @@
+meta {
+  name: All
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{apiUrl}}/security-owner-details?criteria={"securityOwner": "BANSECR"}
+  body: none
+  auth: none
+}
+
+params:query {
+  criteria: {"securityOwner": "BANSECR"}
+  ~criteria: {"ownedObject":"BUDGETING DATA STEWARD"}
+}
+
+script:pre-request {
+  const urlSplit = req.getUrl().split('=');
+  const newCriteria = encodeURIComponent(urlSplit[1]);
+  const newUrl = urlSplit[0]+'='+newCriteria;
+  req.setUrl(newUrl);
+}

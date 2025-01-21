@@ -1,0 +1,50 @@
+meta {
+  name: Get-Persons-By
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: https://integrate.elluciancloud.com/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query getPersons($searchTerm: String!) {
+    persons12(filter: {
+      OR: [
+        {names: {fullName: {CONTAINS: $searchTerm}}},
+        {emails: {address: {CONTAINS: $searchTerm}}},
+        {credentials: {AND: [
+          {type: {EQ: bannerId}},
+          {value: {CONTAINS: $searchTerm}}
+        ]}}
+      ]
+    }) {
+      edges {
+        node {
+          id
+          names {
+            fullName
+            firstName
+            lastName
+          }
+          emails {
+            address
+          }
+          credentials {
+            type
+            value
+          }
+        }
+      }
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "searchTerm": "S00036537"
+  }
+}

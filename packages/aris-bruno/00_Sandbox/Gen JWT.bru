@@ -7,15 +7,15 @@ meta {
 post {
   url: {{urlToken}}?expirationMinutes=120
   body: none
-  auth: none
+  auth: bearer
 }
 
 params:query {
   expirationMinutes: 120
 }
 
-headers {
-  Authorization: Bearer {{apiKey}}
+auth:bearer {
+  token: {{apiKey}}
 }
 
 script:pre-request {
@@ -23,5 +23,5 @@ script:pre-request {
 }
 
 script:post-response {
-  bru.setVar('jwtToken', `Bearer ${res.body}`);
+  bru.setVar('jwtToken', res.body);
 }
