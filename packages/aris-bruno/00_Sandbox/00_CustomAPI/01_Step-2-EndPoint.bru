@@ -1,0 +1,124 @@
+meta {
+  name: 01_Step-2-EndPoint
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{apiUrl}}/api-specifications/:id
+  body: json
+  auth: none
+}
+
+params:path {
+  id: ac5dde5c-d526-4067-904b-bb3656ecdbd9
+}
+
+headers {
+  Accept: application/vnd.hedtech.integration.endpoint-specifications.v1+json
+  Content-Type: application/vnd.hedtech.integration.endpoint-specifications.v1+json
+}
+
+body:json {
+  {
+    "openapi": "3.0.0",
+    "info": {
+      "description": "A resource to retrieve the count of sections filtered by term.",
+      "title": "x-security-relations",
+      "version": "1.0.0"
+    },
+    "components": {
+      "securitySchemes": {
+        "BearerAuth": {
+          "scheme": "bearer",
+          "type": "http"
+        }
+      }
+    },
+    "servers": [
+      {
+        "description": "Ethos Integration",
+        "url": "https://integrate.elluciancloud.com/api"
+      }
+    ],
+    "paths": {
+      "/x-security-relations": {
+        "get": {
+          "summary": "Return all resources",
+          "description": "Returns a paged listing of all the resources in the system.",
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ],
+          "tags": [
+            "x-security-relations"
+          ],
+          "parameters": [
+            {
+              "name": "accept",
+              "in": "header",
+              "required": true,
+              "description": "The version of the resource requested. Prefer to use only the whole MAJOR version.  See the semantic versioning topic in the API Standards for more information. \n```application/vnd.hedtech.integration.v1+json```",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                },
+                "application/vnd.hedtech.integration.v1+json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                },
+                "application/vnd.hedtech.integration.v1.0.0+json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              },
+              "headers": {
+                "X-Media-Type": {
+                  "description": "The full semantic version of the resource returned.",
+                  "schema": {
+                    "type": "string"
+                  }
+                },
+                "X-Total-Count": {
+                  "description": "Specifies the total number of resources that satisfy the query.",
+                  "schema": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized - you cannot touch this endpoint"
+            },
+            "404": {
+              "description": "Resource not found"
+            },
+            "500": {
+              "description": "Server error, unexpected configuration or data",
+              "content": {
+                "application/vnd.hedtech.integration.errors.v2+json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,13 +5,14 @@ meta {
 }
 
 get {
-  url: {{apiUrl}}/security-owner-details?criteria={"objectType":"distributedSecurityGroups"}
+  url: {{apiUrl}}/security-owner-details?criteria={"objectType":"securityGroups","securityOwner":"GENERAL DATA STEWARD"}
   body: none
   auth: none
 }
 
 params:query {
-  criteria: {"objectType":"distributedSecurityGroups"}
+  criteria: {"objectType":"securityGroups","securityOwner":"GENERAL DATA STEWARD"}
+  ~criteria: {"objectType":"distributedSecurityGroups"}
   ~criteria: {"objectType":"securityGroups"}
 }
 

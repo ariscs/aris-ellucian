@@ -1,0 +1,32 @@
+meta {
+  name: 00_Step-1-CreateResource
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{apiUrl}}/api-specifications
+  body: json
+  auth: none
+}
+
+headers {
+  Accept: application/vnd.hedtech.integration.v1+json
+  Content-Type: application/vnd.hedtech.integration.v1+json
+}
+
+body:json {
+  {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "resource": "x-security-relations",
+    "status": "enabled"
+  }
+}
+
+script:pre-request {
+  // {
+  //   "id": "ac5dde5c-d526-4067-904b-bb3656ecdbd9",
+  //   "resource": "x-security-relations",
+  //   "status": "enabled"
+  // }
+}

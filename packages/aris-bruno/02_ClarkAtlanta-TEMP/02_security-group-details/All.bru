@@ -1,0 +1,22 @@
+meta {
+  name: All
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{apiUrl}}/security-group-details?criteria={"securityGroup":"CAU_GEN_PAWCARD_STAFF_G"}
+  body: none
+  auth: none
+}
+
+params:query {
+  criteria: {"securityGroup":"CAU_GEN_PAWCARD_STAFF_G"}
+}
+
+script:pre-request {
+  const urlSplit = req.getUrl().split('=');
+  const newCriteria = encodeURIComponent(urlSplit[1]);
+  const newUrl = urlSplit[0]+'='+newCriteria;
+  req.setUrl(newUrl);
+}

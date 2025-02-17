@@ -1,0 +1,44 @@
+meta {
+  name: Test
+  type: graphql
+  seq: 2
+}
+
+post {
+  url: https://integrate.elluciancloud.com/graphql
+  body: graphql
+  auth: bearer
+}
+
+headers {
+  Accept-Encoding: gzip
+}
+
+auth:bearer {
+  token: {{jwtToken}}
+}
+
+body:graphql {
+  query getSites {
+    buildings6 {
+      edges {
+        node {
+          id
+          title
+          description
+        }
+      }
+    },
+    persons12 {
+      edges {
+        node {
+          emails {
+            address
+            preference
+          }
+        }
+      }
+    }
+  }
+  
+}
